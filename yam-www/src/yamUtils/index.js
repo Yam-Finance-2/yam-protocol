@@ -13,7 +13,7 @@ export const getPoolStartTime = async (poolContract) => {
 
 export const stake = async (poolContract, amount, account) => {
   let now = new Date().getTime() / 1000;
-  if (now >= 1597172400) {
+  if (now >= 1597377600) {
     return poolContract.methods
       .stake((new BigNumber(amount).times(new BigNumber(10).pow(18))).toString())
       .send({ from: account, gas: 200000 })
@@ -28,7 +28,7 @@ export const stake = async (poolContract, amount, account) => {
 
 export const unstake = async (poolContract, amount, account) => {
   let now = new Date().getTime() / 1000;
-  if (now >= 1597172400) {
+  if (now >= 1597377600) {
     return poolContract.methods
       .withdraw((new BigNumber(amount).times(new BigNumber(10).pow(18))).toString())
       .send({ from: account, gas: 200000 })
@@ -43,7 +43,7 @@ export const unstake = async (poolContract, amount, account) => {
 
 export const harvest = async (poolContract, account) => {
   let now = new Date().getTime() / 1000;
-  if (now >= 1597172400) {
+  if (now >= 1597377600) {
     return poolContract.methods
       .getReward()
       .send({ from: account, gas: 200000 })
@@ -58,7 +58,7 @@ export const harvest = async (poolContract, account) => {
 
 export const redeem = async (poolContract, account) => {
   let now = new Date().getTime() / 1000;
-  if (now >= 1597172400) {
+  if (now >= 1597377600) {
     return poolContract.methods
       .exit()
       .send({ from: account, gas: 400000 })

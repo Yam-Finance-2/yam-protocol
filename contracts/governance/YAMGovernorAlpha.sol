@@ -27,7 +27,7 @@ import "../lib/SafeMath.sol";
 
 contract GovernorAlpha {
     /// @notice The name of this contract
-    string public constant name = "YAM Governor Alpha";
+    string public constant name = "YAM 2.0 Governor Alpha";
 
     /// @notice The number of votes in support of a proposal required in order for a quorum to be reached and for a vote to succeed
     function quorumVotes() public view returns (uint256) { return SafeMath.div(SafeMath.mul(yam.initSupply(), 4), 100); } // 4% of YAM

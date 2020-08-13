@@ -22,8 +22,8 @@ async function deployToken(deployer, network) {
   await deployer.deploy(YAMImplementation);
   if (network != "mainnet") {
     await deployer.deploy(YAMProxy,
-      "YAM",
-      "YAM",
+      "YAM2",
+      "YAM2",
       18,
       "9000000000000000000000000", // print extra few mil for user
       YAMImplementation.address,
@@ -31,8 +31,8 @@ async function deployToken(deployer, network) {
     );
   } else {
     await deployer.deploy(YAMProxy,
-      "YAM",
-      "YAM",
+      "YAM2",
+      "YAM2",
       18,
       "2000000000000000000000000",
       YAMImplementation.address,

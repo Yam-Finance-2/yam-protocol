@@ -36,7 +36,7 @@ async function deployRs(deployer, network) {
   let rebase = new web3.eth.Contract(YAMRebaser.abi, YAMRebaser.address);
 
   let pair = await rebase.methods.uniswap_pair().call();
-  console.log(pair)
+  console.log("YAM2.0 <-> yCRV UNISWAP Pair: ", pair)
   let yam = await YAMProxy.deployed();
   await yam._setRebaser(YAMRebaser.address);
   let reserves = await YAMReserves.deployed();

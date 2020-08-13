@@ -42,12 +42,6 @@ const Home: React.FC = () => {
 
   return (
     <Page>
-      <PageHeader icon="⚠️" subtitle="Remove liquidity from the YAM / YCRV Uniswap pool" title="Warning" />
-      <div style={{
-        margin: '-24px auto 48px'
-      }}>
-        <StyledLink href="https://medium.com/@yamfinance/how-to-exit-the-eternal-lands-pool-and-withdraw-your-yam-823d57c95f3a">How to withdraw from Uniswap</StyledLink>
-      </div>
       <Spacer />
       <div>
         <StyledOverview>

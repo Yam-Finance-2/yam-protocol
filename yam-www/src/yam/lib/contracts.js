@@ -15,6 +15,7 @@ import UNIFactJson from './unifact2.json';
 import UNIPairJson from './uni2.json';
 import UNIRouterJson from './uniR.json';
 
+import YCRVPoolJson from '../clean_build/contracts/YAMYCRVPool.json';
 import WETHPoolJson from '../clean_build/contracts/YAMETHPool.json';
 import AMPLPoolJson from '../clean_build/contracts/YAMAMPLPool.json';
 import YFIPoolJson from '../clean_build/contracts/YAMYFIPool.json';
@@ -50,9 +51,10 @@ export class Contracts {
     this.yam = new this.web3.eth.Contract(YAMJson.abi);
 
     this.yfi_pool = new this.web3.eth.Contract(YFIPoolJson.abi);
+    this.ycrv_pool = new this.web3.eth.Contract(YCRVPoolJson.abi);
     this.eth_pool = new this.web3.eth.Contract(WETHPoolJson.abi);
     this.ampl_pool = new this.web3.eth.Contract(AMPLPoolJson.abi);
-    this.ycrv_pool = new this.web3.eth.Contract(IncJson.abi);
+    this.yam_ycrv_pool = new this.web3.eth.Contract(IncJson.abi);
 
     this.comp_pool = new this.web3.eth.Contract(COMPPoolJson.abi);
     this.link_pool = new this.web3.eth.Contract(LINKPoolJson.abi);
@@ -97,7 +99,8 @@ export class Contracts {
       { contract: this.reserves, json: YAMReservesJson },
       { contract: this.gov, json: YAMGovJson },
       { contract: this.timelock, json: YAMTimelockJson },
-      { contract: this.ycrv_pool, json: IncJson },
+      { contract: this.yam_ycrv_pool, json: IncJson },
+      { contract: this.ycrv_pool, json: YCRVPoolJson },
       { contract: this.eth_pool, json: WETHPoolJson },
       { contract: this.yfi_pool, json: YFIPoolJson },
       { contract: this.ampl_pool, json: AMPLPoolJson },
@@ -131,6 +134,7 @@ export class Contracts {
     this.pools = [
       {"tokenAddr": this.yfi.options.address, "poolAddr": this.yfi_pool.options.address},
       {"tokenAddr": this.snx.options.address, "poolAddr": this.snx_pool.options.address},
+      {"tokenAddr": this.ycrv.options.address, "poolAddr": this.ycrv_pool.options.address},
       {"tokenAddr": this.weth.options.address, "poolAddr": this.eth_pool.options.address},
       {"tokenAddr": this.comp.options.address, "poolAddr": this.comp_pool.options.address},
       {"tokenAddr": this.link.options.address, "poolAddr": this.link_pool.options.address},

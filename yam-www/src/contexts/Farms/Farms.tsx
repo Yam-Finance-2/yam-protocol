@@ -13,12 +13,13 @@ const NAME_FOR_POOL: { [key: string]: string } = {
   yfi_pool: 'YFI Farm',
   eth_pool: 'Weth Homestead',
   ampl_pool: 'Ample Soils',
-  ycrv_pool: 'Eternal Lands',
+  yam_ycrv_pool: 'Eternal Lands',
   comp_pool: 'Compounding Hills',
   link_pool: 'Marine Gardens',
   lend_pool: 'Aave Agriculture',
   snx_pool: 'Spartan Grounds',
   mkr_pool: 'Maker Range',
+  ycrv_pool: 'Curve Village',
 }
 
 const ICON_FOR_POOL: { [key: string]: string } = {
@@ -30,7 +31,8 @@ const ICON_FOR_POOL: { [key: string]: string } = {
   lend_pool: '🏕️',
   snx_pool: '⚔️',
   mkr_pool: '🐮',
-  ycrv_pool: '🌈',
+  yam_ycrv_pool: '🌈',
+  ycrv_pool: '💰',
 }
 
 const SORT_FOR_POOL: { [key: string]: number } = {
@@ -38,11 +40,12 @@ const SORT_FOR_POOL: { [key: string]: number } = {
   eth_pool: 1,
   ampl_pool: 2,
   comp_pool: 3,
-  ycrv_pool: 4,
+  yam_ycrv_pool: 4,
   link_pool: 5,
   lend_pool: 6,
   snx_pool: 7,
   mkr_pool: 8,
+  ycrv_pool: 9,
 }
 
 const Farms: React.FC = ({ children }) => {
@@ -64,7 +67,7 @@ const Farms: React.FC = ({ children }) => {
         tokenKey = 'weth'
       } else if (tokenKey === 'ampl') {
         tokenKey = 'ampl_eth_uni_lp'
-      } else if (tokenKey === 'ycrv') {
+      } else if (tokenKey === 'yam_ycrv') {
         tokenKey = 'ycrv_yam_uni_lp'
       }
 
@@ -100,7 +103,7 @@ const Farms: React.FC = ({ children }) => {
       fetchPools()
     }
   }, [yam, fetchPools])
-  
+
   return (
     <Context.Provider value={{ farms }}>
       {children}

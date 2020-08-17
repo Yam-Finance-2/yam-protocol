@@ -74,9 +74,10 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
       getStartTime()
     }
   }, [farm, getStartTime])
-  
+
   const poolActive = startTime * 1000 - Date.now() <= 0
 
+  const depositTokenName = farm.depositToken.toUpperCase() == 'YCRV_YAM_UNI_LP' ? 'YCRV_YAM2_UNI_LP' : farm.depositToken.toUpperCase()
   return (
     <StyledCardWrapper>
       {farm.id === 'ycrv_yam_uni_lp' && (
@@ -88,7 +89,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
             <CardIcon>{farm.icon}</CardIcon>
             <StyledTitle>{farm.name}</StyledTitle>
             <StyledDetails>
-              <StyledDetail>Deposit {farm.depositToken.toUpperCase()}</StyledDetail>
+              <StyledDetail>Deposit {depositTokenName}</StyledDetail>
               <StyledDetail>Earn {farm.earnToken.toUpperCase()}</StyledDetail>
             </StyledDetails>
             <Button

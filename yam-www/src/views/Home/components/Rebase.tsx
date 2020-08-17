@@ -33,9 +33,12 @@ const Rebase: React.FC<RebaseProps> = ({ nextRebase }) => {
           <Dial disabled={!nextRebase} size={232} value={dialValue ? dialValue : 0}>
             <StyledCountdown>
               <StyledCountdownText>
-                {!nextRebase ? '--' : (
+                {
+                  '--'
+                  /*!nextRebase ? '--' : (
                   <Countdown date={new Date(Date.now() + nextRebase)} renderer={renderer} />
-                )}
+                  )*/
+                }
               </StyledCountdownText>
               <Label text="Next rebase" />
             </StyledCountdown>

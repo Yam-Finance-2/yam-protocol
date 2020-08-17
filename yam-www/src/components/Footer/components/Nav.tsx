@@ -5,7 +5,8 @@ const Nav: React.FC = () => {
   return (
     <StyledNav>
       <StyledLink href="https://github.com/yam-finance-2/yam-protocol">Github</StyledLink>
-      <StyledLink href="https://twitter.com/YamFinance2">Twitter</StyledLink>
+      <StyledLink href="https://twitter.com/YamFiClassic">Twitter</StyledLink>
+      <StyledLink href="https://medium.com/@yamfinanceclassic">Medium</StyledLink>
     </StyledNav>
   )
 }

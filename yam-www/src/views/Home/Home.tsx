@@ -11,7 +11,6 @@ import useYam from '../../hooks/useYam'
 
 import Rebase from './components/Rebase'
 import Stats from './components/Stats'
-import Vote from './components/Vote'
 
 import { OverviewData } from './types'
 import { getStats } from './utils'

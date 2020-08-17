@@ -609,7 +609,7 @@ contract LPTokenWrapper {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
-    IERC20 public uni_lp = IERC20(0x2C7a51A357d5739C5C74Bf3C96816849d2c9F726);
+    IERC20 public uni_lp;
 
     uint256 private _totalSupply;
 
@@ -642,11 +642,11 @@ interface YAM {
 }
 
 contract YAMIncentivizer is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public yam = IERC20(0x0e2298E3B3390e3b945a5456fBf59eCc3f55DA16);
+    IERC20 public yam;
     uint256 public constant DURATION = 625000;
 
-    uint256 public initreward = 15 * 10**5 * 10**18; // 1.5m
-    uint256 public starttime = 1597377600 + 24 hours; // 2020-08-15 04:00:00 (UTC UTC +00:00)
+    uint256 public initreward = 7 * 10**5 * 10**18; // 700k
+    uint256 public starttime = 1597622400 + 24 hours; // 08/18/2020 @ 12:00am (UTC)
     uint256 public periodFinish = 0;
     uint256 public rewardRate = 0;
     uint256 public lastUpdateTime;
@@ -659,6 +659,13 @@ contract YAMIncentivizer is LPTokenWrapper, IRewardDistributionRecipient {
     event Staked(address indexed user, uint256 amount);
     event Withdrawn(address indexed user, uint256 amount);
     event RewardPaid(address indexed user, uint256 reward);
+
+    constructor(address _uni_lp, address _yam)
+        public
+    {
+        uni_lp = IERC20(_uni_lp);
+        yam = IERC20(_yam);
+    }
 
     modifier updateReward(address account) {
         rewardPerTokenStored = rewardPerToken();

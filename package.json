@@ -16,6 +16,7 @@
   "devDependencies": {
     "@truffle/hdwallet-provider": "^1.0.40",
     "ethereumjs-abi": "^0.6.8",
-    "ethereumjs-util": "^7.0.4"
+    "ethereumjs-util": "^7.0.4",
+    "truffle-plugin-verify": "^0.3.11"
   }
 }

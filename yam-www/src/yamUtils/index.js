@@ -13,7 +13,7 @@ export const getPoolStartTime = async (poolContract) => {
 
 export const stake = async (poolContract, amount, account) => {
   let now = new Date().getTime() / 1000;
-  if (now >= 1597377600) {
+  if (now >= 1597622400) {
     return poolContract.methods
       .stake((new BigNumber(amount).times(new BigNumber(10).pow(18))).toString())
       .send({ from: account, gas: 200000 })
@@ -28,7 +28,7 @@ export const stake = async (poolContract, amount, account) => {
 
 export const unstake = async (poolContract, amount, account) => {
   let now = new Date().getTime() / 1000;
-  if (now >= 1597377600) {
+  if (now >= 1597622400) {
     return poolContract.methods
       .withdraw((new BigNumber(amount).times(new BigNumber(10).pow(18))).toString())
       .send({ from: account, gas: 200000 })
@@ -43,7 +43,7 @@ export const unstake = async (poolContract, amount, account) => {
 
 export const harvest = async (poolContract, account) => {
   let now = new Date().getTime() / 1000;
-  if (now >= 1597377600) {
+  if (now >= 1597622400) {
     return poolContract.methods
       .getReward()
       .send({ from: account, gas: 200000 })
@@ -58,7 +58,7 @@ export const harvest = async (poolContract, account) => {
 
 export const redeem = async (poolContract, account) => {
   let now = new Date().getTime() / 1000;
-  if (now >= 1597377600) {
+  if (now >= 1597622400) {
     return poolContract.methods
       .exit()
       .send({ from: account, gas: 400000 })
@@ -126,7 +126,7 @@ export const getNextRebaseTimestamp = async (yam) => {
   try {
     let now = await yam.web3.eth.getBlock('latest').then(res => res.timestamp);
     let interval = 43200; // 12 hours
-    let offset = 28800; // 8am/8pm utc
+    let offset = 0; // 12am/12pm utc
     let secondsToRebase = 0;
     if (await yam.contracts.rebaser.methods.rebasingActive().call()) {
       if (now % interval > offset) {
@@ -146,7 +146,7 @@ export const getNextRebaseTimestamp = async (yam) => {
         }
         return endTime + secondsToRebase;
       } else {
-        return now + 13*60*60; // just know that its greater than 12 hours away
+        return now + 7*60*60; // just know that its greater than 12 hours away
       }
     }
     return secondsToRebase

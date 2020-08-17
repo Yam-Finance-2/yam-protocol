@@ -16,6 +16,12 @@ module.exports = {
       },
     },
   },
+  plugins: [
+    'truffle-plugin-verify'
+  ],
+  api_keys: {
+    etherscan: process.env.ETHERSCAN_API_KEY
+  },
   networks: {
     test: {
       host: '0.0.0.0',
@@ -51,7 +57,7 @@ module.exports = {
       gasPrice: Number(process.env.GAS_PRICE),
       gas: 8000000,
       from: process.env.DEPLOYER_ACCOUNT,
-      timeoutBlocks: 800,
+      timeoutBlocks: 8000,
     },
     kovan: {
       network_id: '42',
@@ -61,7 +67,7 @@ module.exports = {
         0,
         1,
       ),
-      gasPrice: 10000000000, // 10 gwei
+      gasPrice: 1000000000, // 1 gwei
       gas: 6900000,
       from: process.env.DEPLOYER_ACCOUNT,
       timeoutBlocks: 500,

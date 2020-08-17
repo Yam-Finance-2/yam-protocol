@@ -1,7 +1,6 @@
 import json
 from pprint import pprint
 networkId = "1"
-networkId2 = "42"
 from os import listdir
 from os.path import isfile, join
 mypath = "/Users/mhe70/my-workspace/yam-protocol/build/contracts"
@@ -22,12 +21,6 @@ for file in onlyfiles:
                     cleaned["networks"][networkId]["address"] = a["networks"][networkId]["address"],
                     cleaned["networks"][networkId]["address"] = cleaned["networks"][networkId]["address"][0]
                     cleaned["networks"][networkId]["transactionHash"] = a["networks"][networkId]["transactionHash"]
-                if (networkId2 in a["networks"].keys()):
-                    cleaned["networks"][networkId2] = {}
-                    cleaned["networks"][networkId2]["links"] = a["networks"][networkId2]["links"],
-                    cleaned["networks"][networkId2]["address"] = a["networks"][networkId2]["address"],
-                    cleaned["networks"][networkId2]["address"] = cleaned["networks"][networkId2]["address"][0]
-                    cleaned["networks"][networkId2]["transactionHash"] = a["networks"][networkId2]["transactionHash"]
                 with open("/Users/mhe70/my-workspace/yam-protocol/clean_build/contracts/"+file, "w+") as c:
                     c.write(json.dumps(cleaned))
             except Exception as e:

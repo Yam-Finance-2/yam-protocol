@@ -1,13 +1,11 @@
 import React, { useCallback, useEffect } from 'react'
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Switch,
 } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { UseWalletProvider } from 'use-wallet'
-
-import DisclaimerModal from './components/DisclaimerModal'
 
 import FarmsProvider from './contexts/Farms'
 import ModalsProvider from './contexts/Modals'
@@ -34,7 +32,6 @@ const App: React.FC = () => {
           </Route>
         </Switch>
       </Router>
-      <Disclaimer />
     </Providers>
   )
 }
@@ -54,26 +51,6 @@ const Providers: React.FC = ({ children }) => {
         </YamProvider>
       </UseWalletProvider>
     </ThemeProvider>
-  )
-}
-
-const Disclaimer: React.FC = () => {
-
-  const markSeen = useCallback(() => {
-    localStorage.setItem('disclaimer', 'seen')
-  }, [])
-
-  const [onPresentDisclaimerModal] = useModal(<DisclaimerModal onConfirm={markSeen} />)
-
-  useEffect(() => {
-    const seenDisclaimer = localStorage.getItem('disclaimer')
-    if (!seenDisclaimer) {
-      onPresentDisclaimerModal()
-    }
-  }, [])
-
-  return (
-    <div />
   )
 }
 

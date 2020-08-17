@@ -34,7 +34,7 @@ async function deployToken(deployer, network) {
       "YAM2",
       "YAM2",
       18,
-      "2000000000000000000000000",
+      "300000000000000000000000", // 300k
       YAMImplementation.address,
       "0x"
     );

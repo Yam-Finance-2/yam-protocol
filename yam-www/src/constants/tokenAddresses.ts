@@ -1,1 +1,1 @@
-export const yam = '0x0e2298e3b3390e3b945a5456fbf59ecc3f55da16'
+export const yam = '0x49411930AC0c14713e36Db62700FBE31017aCc9A'

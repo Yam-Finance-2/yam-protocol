@@ -629,10 +629,10 @@ contract LPTokenWrapper {
 }
 
 contract YAMETHPool is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public yam = IERC20(0x0e2298E3B3390e3b945a5456fBf59eCc3f55DA16);
+    IERC20 public yam;
     uint256 public constant DURATION = 625000; // ~7 1/4 days
 
-    uint256 public starttime = 1597377600; // 2020-08-14 04:00:00 (UTC UTC +00:00)
+    uint256 public starttime = 1597622400; // 08/17/2020 @ 12:00am (UTC)
     uint256 public periodFinish = 0;
     uint256 public rewardRate = 0;
     uint256 public lastUpdateTime;
@@ -644,6 +644,12 @@ contract YAMETHPool is LPTokenWrapper, IRewardDistributionRecipient {
     event Staked(address indexed user, uint256 amount);
     event Withdrawn(address indexed user, uint256 amount);
     event RewardPaid(address indexed user, uint256 reward);
+
+    constructor(address _yam)
+        public
+    {
+        yam = IERC20(_yam);
+    }
 
     modifier checkStart() {
         require(block.timestamp >= starttime,"not start");

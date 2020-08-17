@@ -10,42 +10,24 @@ import Context from './context'
 import { Farm } from './types'
 
 const NAME_FOR_POOL: { [key: string]: string } = {
-  yfi_pool: 'YFI Farm',
+  yam1_pool: 'YAM 1.0 Zombieland',
   eth_pool: 'Weth Homestead',
-  ampl_pool: 'Ample Soils',
   yam_ycrv_pool: 'Eternal Lands',
-  comp_pool: 'Compounding Hills',
-  link_pool: 'Marine Gardens',
-  lend_pool: 'Aave Agriculture',
-  snx_pool: 'Spartan Grounds',
-  mkr_pool: 'Maker Range',
   ycrv_pool: 'Curve Village',
 }
 
 const ICON_FOR_POOL: { [key: string]: string } = {
-  yfi_pool: '🐋',
+  yam1_pool: '🧟‍♂️',
   eth_pool: '🌎',
-  ampl_pool: '🌷',
-  comp_pool: '💸',
-  link_pool: '🔗',
-  lend_pool: '🏕️',
-  snx_pool: '⚔️',
-  mkr_pool: '🐮',
   yam_ycrv_pool: '🌈',
   ycrv_pool: '💰',
 }
 
 const SORT_FOR_POOL: { [key: string]: number } = {
-  yfi_pool: 0,
-  eth_pool: 1,
-  ampl_pool: 2,
-  comp_pool: 3,
+  yam1_pool: 1,
+  eth_pool: 2,
+  ycrv_pool: 3,
   yam_ycrv_pool: 4,
-  link_pool: 5,
-  lend_pool: 6,
-  snx_pool: 7,
-  mkr_pool: 8,
-  ycrv_pool: 9,
 }
 
 const Farms: React.FC = ({ children }) => {
@@ -65,8 +47,6 @@ const Farms: React.FC = ({ children }) => {
       let tokenKey = poolKey.replace('_pool', '')
       if (tokenKey === 'eth') {
         tokenKey = 'weth'
-      } else if (tokenKey === 'ampl') {
-        tokenKey = 'ampl_eth_uni_lp'
       } else if (tokenKey === 'yam_ycrv') {
         tokenKey = 'ycrv_yam_uni_lp'
       }
@@ -77,14 +57,14 @@ const Farms: React.FC = ({ children }) => {
         if (method) {
           tokenAddress = await method().call()
         } else if (tokenKey === 'ycrv_yam_uni_lp') {
-          tokenAddress = '0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8'
+          tokenAddress = '0xC329BC05CC9fb5f4e8dA13Bf6A849D33dD2A167b'
         }
         farmsArr.push({
           contract: pool,
           name: NAME_FOR_POOL[poolKey],
           depositToken: tokenKey,
           depositTokenAddress: tokenAddress,
-          earnToken: 'yam',
+          earnToken: 'yam2',
           earnTokenAddress: yamAddress,
           icon: ICON_FOR_POOL[poolKey],
           id: tokenKey,

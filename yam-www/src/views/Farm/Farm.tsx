@@ -70,7 +70,7 @@ const Farm: React.FC = () => {
             <Stake
               poolContract={contract}
               tokenContract={tokenContract}
-              tokenName={depositToken.toUpperCase()}
+              tokenName={depositToken.toUpperCase() == 'YCRV_YAM_UNI_LP' ? 'YCRV_YAM2_UNI_LP' : depositTokenName.toUpperCase()}
             />
           </StyledCardWrapper>
         </StyledCardsWrapper>

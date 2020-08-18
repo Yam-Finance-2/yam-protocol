@@ -7,6 +7,9 @@ const Nav: React.FC = () => {
     <StyledNav>
       <StyledLink exact activeClassName="active" to="/">Home</StyledLink>
       <StyledLink exact activeClassName="active" to="/farms">Farms</StyledLink>
+      <a style={{color: "#AA8592",fontWeight: 700,paddingLeft: "16px",paddingRight: "16px",textDecoration: "none"}} href="https://yieldfarming.netlify.app/yam/yamycrv/">
+         Yields
+      </a>
     </StyledNav>
   )
 }

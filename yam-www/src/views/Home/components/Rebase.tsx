@@ -34,10 +34,9 @@ const Rebase: React.FC<RebaseProps> = ({ nextRebase }) => {
             <StyledCountdown>
               <StyledCountdownText>
                 {
-                  '--'
-                  /*!nextRebase ? '--' : (
+                  !nextRebase ? '--' : (
                   <Countdown date={new Date(Date.now() + nextRebase)} renderer={renderer} />
-                  )*/
+                  )
                 }
               </StyledCountdownText>
               <Label text="Next rebase" />

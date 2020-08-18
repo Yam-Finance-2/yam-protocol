@@ -126,7 +126,7 @@ export const getNextRebaseTimestamp = async (yam) => {
   try {
     let now = await yam.web3.eth.getBlock('latest').then(res => res.timestamp);
     let interval = 43200; // 12 hours
-    let offset = 0; // 12am/12pm utc
+    let offset = 28800; // 1am/1pm utc
     let secondsToRebase = 0;
     if (await yam.contracts.rebaser.methods.rebasingActive().call()) {
       if (now % interval > offset) {
@@ -146,7 +146,7 @@ export const getNextRebaseTimestamp = async (yam) => {
         }
         return endTime + secondsToRebase;
       } else {
-        return now + 7*60*60; // just know that its greater than 12 hours away
+        return now + 13*60*60; // just know that its greater than 12 hours away
       }
     }
     return secondsToRebase
